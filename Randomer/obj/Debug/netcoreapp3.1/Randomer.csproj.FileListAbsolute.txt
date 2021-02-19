@@ -13,3 +13,4 @@ C:\Users\hkct_\Desktop\Randomer\Randomer\obj\Debug\netcoreapp3.1\Randomer.csproj
 C:\Users\hkct_\Desktop\Randomer\Randomer\obj\Debug\netcoreapp3.1\Randomer.dll
 C:\Users\hkct_\Desktop\Randomer\Randomer\obj\Debug\netcoreapp3.1\Randomer.pdb
 C:\Users\hkct_\Desktop\Randomer\Randomer\obj\Debug\netcoreapp3.1\Randomer.genruntimeconfig.cache
+C:\Users\hkct_\Desktop\Randomer\Randomer\obj\Debug\netcoreapp3.1\Randomer.Form2.resources
