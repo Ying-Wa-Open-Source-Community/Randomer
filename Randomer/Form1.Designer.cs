@@ -318,9 +318,9 @@ namespace Randomer
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(394, 163);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(76, 24);
+            this.checkBox1.Size = new System.Drawing.Size(77, 24);
             this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "infinity";
+            this.checkBox1.Text = "infinite";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 

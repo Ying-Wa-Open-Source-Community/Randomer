@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,12 +13,13 @@ namespace Randomer
         public static bool numberOrNot = true;
         public static int ranSmall = 0;
         public static int ranBig = 0;
-        public static bool ifInfinity = false;
+        public static bool ifInfinite = false;
         public static int timesCanBePick = 0;
         public static int textSize = 0;
         public static Color fontColor, backColor;
         public static bool ifFullScreen = false;
         public static string[] items;
+        public static ArrayList totalItems = new ArrayList();
 
         public MainForm()
         {
@@ -81,12 +83,12 @@ namespace Randomer
             if (checkBox1.Checked)
             {
                 numericUpDown3.Enabled = false;
-                ifInfinity = true;
+                ifInfinite = true;
             }
             else
             {
                 numericUpDown3.Enabled = true;
-                ifInfinity = false;
+                ifInfinite = false;
                 timesCanBePick = Convert.ToInt32(numericUpDown3.Value);
             }
         }
@@ -136,8 +138,8 @@ namespace Randomer
         private void editItems_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
-            
-            var result = f2.ShowDialog();
+
+            DialogResult result = f2.ShowDialog();
             if (result == DialogResult.OK)
             {
                 items = Form2.text;
@@ -145,10 +147,32 @@ namespace Randomer
             }
         }
 
+
         private void Start_Click(object sender, EventArgs e)
         {
+            ranSmall = Convert.ToInt32(numericUpDown1.Value);
+            ranBig = Convert.ToInt32(numericUpDown2.Value);
             textSize = Convert.ToInt32(numericUpDown4.Value * 8 * 2);
+            if (numberOrNot)
+            {
+                for (int i = ranSmall; i <= ranBig; i++)
+                {
+                    totalItems.Add(i.ToString());
+                }
 
+            }
+            else
+            {
+                try
+                {
+                    totalItems.AddRange(items);
+                }
+                catch(ArgumentNullException)
+                {
+                    MessageBox.Show("Item list is empty.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+
+            }
         }
     }
 }
