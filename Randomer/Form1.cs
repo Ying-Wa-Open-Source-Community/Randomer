@@ -17,7 +17,6 @@ namespace Randomer
         public static int timesCanBePick = 0;
         public static int textSize = 0;
         public static Color fontColor, backColor;
-        public static bool ifFullScreen = false;
         public static string[] items;
         public static ArrayList totalItems = new ArrayList();
 
@@ -107,14 +106,7 @@ namespace Randomer
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
-            {
-                ifFullScreen = true;
-            }
-            else
-            {
-                ifFullScreen = false;
-            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -190,6 +182,7 @@ namespace Randomer
                     if (ranBig <= ranSmall && numberOrNot)
                     {
                         MessageBox.Show("The \"From\" number cannot be greater than or equals to the \"to\" number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        goto end;
                     }
                     if (!checkBox1.Checked)
                     {
@@ -220,13 +213,18 @@ namespace Randomer
                         catch (ArgumentNullException)
                         {
                             MessageBox.Show("Item list is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            goto end;
                         }
 
                     }
+                    var a = totalItems;
                     for (int i = 1; i <= timesCanBePick; i++)
                     {
-                        totalItems.AddRange(totalItems);
+                        totalItems.AddRange(a);
                     }
+                    Form3 f = new Form3();
+                    f.ShowDialog();
+                end:;
                     break;
             }
         }

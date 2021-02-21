@@ -45,8 +45,14 @@ namespace Randomer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(textBox1.Text == "")
+            {
+                MessageBox.Show("You didn't type anything!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                goto end;
+            }
             if (oringinalText == textBox1.Text)
             {
+                text = textBox1.Text.Split("\r\n");
                 edited = false;
             }
             if (Convert.ToInt32(label3.Text) > 200000000)
@@ -55,8 +61,10 @@ namespace Randomer
             }
             else
             {
+                text = textBox1.Text.Split("\r\n");
                 this.DialogResult = DialogResult.OK;
             }
+        end:;
         }
     }
 }

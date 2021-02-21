@@ -30,10 +30,12 @@ namespace Randomer
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Picker = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,7 +63,6 @@ namespace Randomer
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Picker.SuspendLayout();
@@ -88,6 +89,12 @@ namespace Randomer
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(64, 24);
+            this.toolStripMenuItem1.Text = "About";
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.Picker);
@@ -101,6 +108,8 @@ namespace Randomer
             // 
             // Picker
             // 
+            this.Picker.Controls.Add(this.label10);
+            this.Picker.Controls.Add(this.label9);
             this.Picker.Controls.Add(this.groupBox2);
             this.Picker.Controls.Add(this.groupBox1);
             this.Picker.Location = new System.Drawing.Point(4, 29);
@@ -112,9 +121,26 @@ namespace Randomer
             this.Picker.UseVisualStyleBackColor = true;
             this.Picker.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(248, 354);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(194, 60);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "*Space*: Pick/repick an item\r\n*F1*: Full screen\r\n*Esc*: Exit full screen";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(143, 354);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(92, 20);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Hot keys list:";
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox2);
             this.groupBox2.Controls.Add(this.pictureBox2);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.label8);
@@ -125,21 +151,10 @@ namespace Randomer
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(0, 226);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(939, 174);
+            this.groupBox2.Size = new System.Drawing.Size(939, 109);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Appearance";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(400, 111);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(100, 24);
-            this.checkBox2.TabIndex = 26;
-            this.checkBox2.Text = "Full screen";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // pictureBox2
             // 
@@ -449,12 +464,6 @@ namespace Randomer
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(64, 24);
-            this.toolStripMenuItem1.Text = "About";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -465,6 +474,7 @@ namespace Randomer
             this.Controls.Add(this.Start);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Randomer";
@@ -473,6 +483,7 @@ namespace Randomer
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.Picker.ResumeLayout(false);
+            this.Picker.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -521,9 +532,10 @@ namespace Randomer
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ContextMenuStrip Help;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
