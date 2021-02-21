@@ -51,7 +51,9 @@ namespace Randomer
             this.Controls.Add(this.label1);
             this.Name = "Form3";
             this.Text = "Randomer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             this.Load += new System.EventHandler(this.Form3_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form3_KeyDown);
             this.ResumeLayout(false);
 
         }

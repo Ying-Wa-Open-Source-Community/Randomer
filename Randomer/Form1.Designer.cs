@@ -124,7 +124,7 @@ namespace Randomer
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(248, 354);
+            this.label10.Location = new System.Drawing.Point(405, 375);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(194, 60);
             this.label10.TabIndex = 3;
@@ -133,7 +133,7 @@ namespace Randomer
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(143, 354);
+            this.label9.Location = new System.Drawing.Point(300, 375);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(92, 20);
             this.label9.TabIndex = 2;
@@ -234,6 +234,7 @@ namespace Randomer
             0,
             0,
             0});
+            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
             // label6
             // 

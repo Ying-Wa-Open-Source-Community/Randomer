@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace Randomer
 {
@@ -28,24 +22,24 @@ namespace Randomer
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            if(MainForm.edited)
+            if (MainForm.edited)
             {
-            string[] ori = MainForm.items;
-            foreach (var item in ori)
-            {
-                textBox1.AppendText(item);
-                if(!(Array.IndexOf(ori,item) != ori.Length-2))
+                string[] ori = MainForm.items;
+                foreach (string item in ori)
                 {
-                    textBox1.AppendText("\r\n");
+                    textBox1.AppendText(item);
+                    if (Array.IndexOf(ori, item) != ori.Length - 1)
+                    {
+                        textBox1.AppendText("\r\n");
+                    }
                 }
-            }
             }
             oringinalText = textBox1.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "")
+            if (textBox1.Text == "")
             {
                 MessageBox.Show("You didn't type anything!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 goto end;
@@ -62,7 +56,7 @@ namespace Randomer
             else
             {
                 text = textBox1.Text.Split("\r\n");
-                this.DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
             }
         end:;
         }
