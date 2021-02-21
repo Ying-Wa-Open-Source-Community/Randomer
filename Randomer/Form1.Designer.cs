@@ -29,15 +29,7 @@ namespace Randomer
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.File = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Help = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.About = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Picker = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -69,9 +61,8 @@ namespace Randomer
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.File.SuspendLayout();
-            this.Help.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Picker.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,68 +79,14 @@ namespace Randomer
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(974, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDown = this.File;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(46, 24);
-            this.toolStripMenuItem1.Text = "File";
-            // 
-            // File
-            // 
-            this.File.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.File.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openFile,
-            this.saveToFile});
-            this.File.Name = "contextMenuStrip1";
-            this.File.OwnerItem = this.toolStripMenuItem1;
-            this.File.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.File.Size = new System.Drawing.Size(202, 52);
-            this.File.Opening += new System.ComponentModel.CancelEventHandler(this.File_Opening);
-            // 
-            // openFile
-            // 
-            this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(201, 24);
-            this.openFile.Text = "Import-Open File";
-            // 
-            // saveToFile
-            // 
-            this.saveToFile.Name = "saveToFile";
-            this.saveToFile.Size = new System.Drawing.Size(201, 24);
-            this.saveToFile.Text = "Export-Save to file";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.DropDown = this.Help;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(55, 24);
-            this.toolStripMenuItem2.Text = "Help";
-            // 
-            // Help
-            // 
-            this.Help.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.Help.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.About});
-            this.Help.Name = "contextMenuStrip1";
-            this.Help.OwnerItem = this.toolStripMenuItem2;
-            this.Help.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.Help.Size = new System.Drawing.Size(120, 28);
-            // 
-            // About
-            // 
-            this.About.Name = "About";
-            this.About.Size = new System.Drawing.Size(119, 24);
-            this.About.Text = "About";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // tabControl1
             // 
@@ -470,6 +407,7 @@ namespace Randomer
             this.Grouper.TabIndex = 1;
             this.Grouper.Text = "Grouper";
             this.Grouper.UseVisualStyleBackColor = true;
+            this.Grouper.Click += new System.EventHandler(this.Grouper_Click);
             // 
             // Sequencer
             // 
@@ -511,6 +449,12 @@ namespace Randomer
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(64, 24);
+            this.toolStripMenuItem1.Text = "About";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -527,8 +471,6 @@ namespace Randomer
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.File.ResumeLayout(false);
-            this.Help.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.Picker.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -549,12 +491,6 @@ namespace Randomer
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ContextMenuStrip File;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem openFile;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ContextMenuStrip Help;
-        private System.Windows.Forms.ToolStripMenuItem About;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Picker;
         private System.Windows.Forms.TabPage Grouper;
@@ -563,7 +499,6 @@ namespace Randomer
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ToolStripMenuItem saveToFile;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button editItems;
@@ -587,6 +522,8 @@ namespace Randomer
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.ContextMenuStrip Help;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

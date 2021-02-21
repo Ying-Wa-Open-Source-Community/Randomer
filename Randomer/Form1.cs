@@ -21,6 +21,9 @@ namespace Randomer
         public static string[] items;
         public static ArrayList totalItems = new ArrayList();
 
+
+        public static bool edited = false;
+
         public MainForm()
         {
             InitializeComponent();
@@ -49,14 +52,10 @@ namespace Randomer
             if (!radioButton2.Checked)
             {
                 editItems.Enabled = false;
-                numberOrNot = true;
-                ranSmall = Convert.ToInt32(numericUpDown1.Value);
-                ranBig = Convert.ToInt32(numericUpDown2.Value);
             }
             else
             {
                 editItems.Enabled = true;
-                numberOrNot = false;
             }
         }
 
@@ -66,15 +65,13 @@ namespace Randomer
             {
                 numericUpDown1.Enabled = false;
                 numericUpDown2.Enabled = false;
-                numberOrNot = false;
             }
             else
             {
                 numericUpDown1.Enabled = true;
                 numericUpDown2.Enabled = true;
-                numberOrNot = true;
-                ranSmall = Convert.ToInt32(numericUpDown1.Value);
-                ranBig = Convert.ToInt32(numericUpDown2.Value);
+ 
+
             }
         }
 
@@ -83,13 +80,10 @@ namespace Randomer
             if (checkBox1.Checked)
             {
                 numericUpDown3.Enabled = false;
-                ifInfinite = true;
             }
             else
             {
                 numericUpDown3.Enabled = true;
-                ifInfinite = false;
-                timesCanBePick = Convert.ToInt32(numericUpDown3.Value);
             }
         }
 
@@ -125,53 +119,115 @@ namespace Randomer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textSize = Convert.ToInt32(numericUpDown4.Value * 8 * 2);
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
 
+                    break;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textSize = Convert.ToInt32(numericUpDown4.Value * 8 * 2);
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+
+                    break;
+            }
 
         }
 
         private void editItems_Click(object sender, EventArgs e)
         {
+ 
             Form2 f2 = new Form2();
 
             DialogResult result = f2.ShowDialog();
             if (result == DialogResult.OK)
             {
                 items = Form2.text;
+                edited = Form2.edited;
                 f2.Close();
-            }
+            }          
         }
 
+        private void Grouper_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Help_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void Help_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            MessageBox.Show("Randomer (Version0.1) \nCopyright (C) 2021 Henry Chan\n    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.If not, see \n< https://www.gnu.org/licenses/>. \nRandomer (Version 0.1 or any later version) and every source code/file/folder and applications in this directory or subdirectory of this folder is licensed under GNU GPL Version3 or any later version.", "About",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
 
         private void Start_Click(object sender, EventArgs e)
         {
-            ranSmall = Convert.ToInt32(numericUpDown1.Value);
-            ranBig = Convert.ToInt32(numericUpDown2.Value);
-            textSize = Convert.ToInt32(numericUpDown4.Value * 8 * 2);
-            if (numberOrNot)
+            switch (tabControl1.SelectedIndex)
             {
-                for (int i = ranSmall; i <= ranBig; i++)
-                {
-                    totalItems.Add(i.ToString());
-                }
+                case 0:
+                    if (radioButton1.Checked)
+                    {
+                        numberOrNot = true;
+                    }
+                    else
+                    {
+                        numberOrNot = false;
+                    }
+                    ranSmall = Convert.ToInt32(numericUpDown1.Value);
+                    ranBig = Convert.ToInt32(numericUpDown2.Value);
+                    if (ranBig <= ranSmall && numberOrNot)
+                    {
+                        MessageBox.Show("The \"From\" number cannot be greater than or equals to the \"to\" number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    if (!checkBox1.Checked)
+                    {
+                        timesCanBePick = Convert.ToInt32(numericUpDown3.Value);
+                    }
+                    else
+                    {
+                        ifInfinite = true;
+                    }
+                    textSize = Convert.ToInt32(numericUpDown4.Value * 8 * 2);
+                    ranSmall = Convert.ToInt32(numericUpDown1.Value);
+                    ranBig = Convert.ToInt32(numericUpDown2.Value);
+                    textSize = Convert.ToInt32(numericUpDown4.Value * 8 * 2);
+                    if (numberOrNot)
+                    {
+                        for (int i = ranSmall; i <= ranBig; i++)
+                        {
+                            totalItems.Add(i.ToString());
+                        }
 
-            }
-            else
-            {
-                try
-                {
-                    totalItems.AddRange(items);
-                }
-                catch(ArgumentNullException)
-                {
-                    MessageBox.Show("Item list is empty.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            totalItems.AddRange(items);
+                        }
+                        catch (ArgumentNullException)
+                        {
+                            MessageBox.Show("Item list is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
+                    }
+                    for (int i = 1; i <= timesCanBePick; i++)
+                    {
+                        totalItems.AddRange(totalItems);
+                    }
+                    break;
             }
         }
     }
