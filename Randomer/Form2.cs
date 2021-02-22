@@ -60,5 +60,10 @@ namespace Randomer
             }
         end:;
         }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            text = textBox1.Text.Split("\r\n");
+        }
     }
 }

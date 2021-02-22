@@ -57,12 +57,9 @@ namespace Randomer
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Grouper = new System.Windows.Forms.TabPage();
-            this.Sequencer = new System.Windows.Forms.TabPage();
             this.Start = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Picker.SuspendLayout();
@@ -98,8 +95,6 @@ namespace Randomer
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.Picker);
-            this.tabControl1.Controls.Add(this.Grouper);
-            this.tabControl1.Controls.Add(this.Sequencer);
             this.tabControl1.Location = new System.Drawing.Point(12, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -126,9 +121,10 @@ namespace Randomer
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(405, 375);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(194, 60);
+            this.label10.Size = new System.Drawing.Size(194, 100);
             this.label10.TabIndex = 3;
-            this.label10.Text = "*Space*: Pick/repick an item\r\n*F1*: Full screen\r\n*Esc*: Exit full screen";
+            this.label10.Text = "*Space*: Pick/repick an item\r\n*F1*: Full screen\r\n*Esc*: Exit full screen\r\n*Enter*" +
+    ": Exit picking\r\n*F2*: Show/Hide logs";
             // 
             // label9
             // 
@@ -414,64 +410,21 @@ namespace Randomer
             this.label3.TabIndex = 13;
             this.label3.Text = "to";
             // 
-            // Grouper
-            // 
-            this.Grouper.Location = new System.Drawing.Point(4, 29);
-            this.Grouper.Name = "Grouper";
-            this.Grouper.Padding = new System.Windows.Forms.Padding(3);
-            this.Grouper.Size = new System.Drawing.Size(942, 503);
-            this.Grouper.TabIndex = 1;
-            this.Grouper.Text = "Grouper";
-            this.Grouper.UseVisualStyleBackColor = true;
-            this.Grouper.Click += new System.EventHandler(this.Grouper_Click);
-            // 
-            // Sequencer
-            // 
-            this.Sequencer.Location = new System.Drawing.Point(4, 29);
-            this.Sequencer.Name = "Sequencer";
-            this.Sequencer.Padding = new System.Windows.Forms.Padding(3);
-            this.Sequencer.Size = new System.Drawing.Size(942, 503);
-            this.Sequencer.TabIndex = 2;
-            this.Sequencer.Text = "Sequencer";
-            this.Sequencer.UseVisualStyleBackColor = true;
-            // 
             // Start
             // 
             this.Start.Location = new System.Drawing.Point(181, 584);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(141, 31);
+            this.Start.Size = new System.Drawing.Size(611, 31);
             this.Start.TabIndex = 0;
             this.Start.Text = "Start";
             this.Start.UseVisualStyleBackColor = true;
             this.Start.Click += new System.EventHandler(this.Start_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(372, 584);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 31);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Save setting to file";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(601, 584);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(214, 31);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Import setting from file";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 627);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
@@ -505,13 +458,9 @@ namespace Randomer
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Picker;
-        private System.Windows.Forms.TabPage Grouper;
-        private System.Windows.Forms.TabPage Sequencer;
         private System.Windows.Forms.Button Start;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button editItems;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -537,6 +486,7 @@ namespace Randomer
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

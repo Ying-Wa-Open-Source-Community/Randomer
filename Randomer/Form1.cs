@@ -19,6 +19,7 @@ namespace Randomer
         public static Color fontColor, backColor;
         public static string[] items;
         public static ArrayList totalItems = new ArrayList();
+        ArrayList a = new ArrayList(); //This is for adding "totalItems" adding itself.
 
 
         public static bool edited = false;
@@ -109,26 +110,7 @@ namespace Randomer
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            switch (tabControl1.SelectedIndex)
-            {
-                case 0:
 
-                    break;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            switch (tabControl1.SelectedIndex)
-            {
-                case 0:
-
-                    break;
-            }
-
-        }
 
         private void editItems_Click(object sender, EventArgs e)
         {
@@ -144,24 +126,9 @@ namespace Randomer
             }
         }
 
-        private void Grouper_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Help_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void Help_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            MessageBox.Show("Randomer (Version0.1) \nCopyright (C) 2021 Henry Chan\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.If not, see \n< https://www.gnu.org/licenses/>. \nRandomer (Version 0.1 or any later version) and every source code/file/folder and applications in this directory or subdirectory of this folder is licensed under GNU GPL Version3 or any later version.", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Randomer (Version 1.0) \nCopyright (C) 2021 Henry Chan\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.If not, see \n< https://www.gnu.org/licenses/>. \nRandomer (Version 0.1 or any later version) and every source code/file/folder and applications in this directory or subdirectory of this folder is licensed under GNU GPL Version3 or any later version.", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void numericUpDown4_ValueChanged(object sender, EventArgs e)
@@ -171,12 +138,14 @@ namespace Randomer
 
         private void Start_Click(object sender, EventArgs e)
         {
+            totalItems.Clear();
+            a.Clear();
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
                     if (fontColor == backColor)
                     {
-                        DialogResult r =  MessageBox.Show("The font color has been set the same with background color, do you want to change it?","Color warning",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                        DialogResult r = MessageBox.Show("The font color has been set the same with background color, do you want to change it?", "Color warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (r == DialogResult.Yes)
                         {
                             goto end;
@@ -200,6 +169,7 @@ namespace Randomer
                     if (!checkBox1.Checked)
                     {
                         timesCanBePick = Convert.ToInt32(numericUpDown3.Value);
+                        ifInfinite = false;
                     }
                     else
                     {
@@ -214,6 +184,7 @@ namespace Randomer
                         for (int i = ranSmall; i <= ranBig; i++)
                         {
                             totalItems.Add(i.ToString());
+                            a.Add(i.ToString());
                         }
 
                     }
@@ -222,6 +193,7 @@ namespace Randomer
                         try
                         {
                             totalItems.AddRange(items);
+                            a.AddRange(items);
                         }
                         catch (ArgumentNullException)
                         {
@@ -230,10 +202,13 @@ namespace Randomer
                         }
 
                     }
-                    ArrayList a = totalItems;
-                    for (int i = 1; i < timesCanBePick; i++)
+
+                    if (!ifInfinite)
                     {
-                        totalItems.AddRange(a);
+                        for (int i = 1; i < timesCanBePick; i++)
+                        {
+                            totalItems.AddRange(a);
+                        }
                     }
                     Form3 f = new Form3();
                     f.ShowDialog();
